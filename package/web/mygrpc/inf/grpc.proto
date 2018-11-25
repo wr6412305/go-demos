@@ -1,0 +1,18 @@
+syntax = "proto3";  // protobuf3
+
+package inf;
+
+// request
+message UserRq {
+    int32 id = 1;
+}
+
+// response
+message UserRp {
+    string name = 1;
+}
+
+// service
+service Data {
+    rpc GetUser(UserRq) returns (UserRp);
+}
