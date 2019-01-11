@@ -1,0 +1,7 @@
+test
+ljs
+this
+is 
+a
+file
+to test base64 encode.
