@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "beego-demo/helloprj/routers"
+	_ "go-demos/beego-demo/helloprj/routers"
 
 	"github.com/astaxie/beego"
 )

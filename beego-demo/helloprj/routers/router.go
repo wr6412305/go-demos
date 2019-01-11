@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"beego-demo/helloprj/controllers"
+	"go-demos/beego-demo/helloprj/controllers"
 
 	"github.com/astaxie/beego"
 )

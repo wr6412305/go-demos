@@ -1,7 +1,7 @@
 package test
 
 import (
-	_ "beego-demo/helloprj/routers"
+	_ "go-demos/beego-demo/helloprj/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
