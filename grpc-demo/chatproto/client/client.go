@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	proto "grpc-demo/chatproto/chat"
+	proto "go-demos/grpc-demo/chatproto/chat"
 
 	"google.golang.org/grpc"
 )

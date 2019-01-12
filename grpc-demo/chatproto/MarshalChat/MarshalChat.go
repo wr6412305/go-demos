@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/hex"
 	"fmt"
-	"grpc-demo/chatproto/chat"
+	"go-demos/grpc-demo/chatproto/chat"
 	"log"
 
 	proto "github.com/golang/protobuf/proto"

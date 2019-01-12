@@ -1,7 +1,7 @@
 package main
 
 import (
-	proto "grpc-demo/chatproto/chat"
+	proto "go-demos/grpc-demo/chatproto/chat"
 	"io"
 	"log"
 	"net"
