@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"web-demo/restful/routes"
+	"go-demos/restful/routes"
 )
 
 func main() {

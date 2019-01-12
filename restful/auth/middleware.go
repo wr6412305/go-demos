@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"web-demo/restful/helper"
-	"web-demo/restful/models"
+	"go-demos/restful/helper"
+	"go-demos/restful/models"
 
 	jwt "github.com/dgrijalva/jwt-go"
 )

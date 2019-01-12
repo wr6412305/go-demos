@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"web-demo/restful/controllers"
+	"go-demos/restful/controllers"
 
 	"github.com/gorilla/mux"
 )

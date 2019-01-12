@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"web-demo/restful/models"
+	"go-demos/restful/models"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
