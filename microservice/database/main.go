@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"go-demos/microservice/dao"
+	"go-demos/microservice/models"
 	"io/ioutil"
-	"web-demo/microservice/dao"
-	"web-demo/microservice/models"
 )
 
 func main() {

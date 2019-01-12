@@ -6,9 +6,9 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"web-demo/microservice/dao"
-	"web-demo/microservice/helper"
-	"web-demo/microservice/models"
+	"go-demos/microservice/dao"
+	"go-demos/microservice/helper"
+	"go-demos/microservice/models"
 
 	"github.com/globalsign/mgo/bson"
 )

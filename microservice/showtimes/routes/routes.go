@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"go-demos/microservice/showtimes/controllers"
 	"net/http"
-	"web-demo/microservice/showtimes/controllers"
 
 	"github.com/gorilla/mux"
 )

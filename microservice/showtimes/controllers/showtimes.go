@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"encoding/json"
+	"go-demos/microservice/dao"
+	"go-demos/microservice/helper"
+	"go-demos/microservice/models"
 	"net/http"
-	"web-demo/microservice/dao"
-	"web-demo/microservice/helper"
-	"web-demo/microservice/models"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"

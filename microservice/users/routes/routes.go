@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"go-demos/microservice/users/controllers"
 	"net/http"
-	"web-demo/microservice/users/controllers"
 
 	"github.com/gorilla/mux"
 )

@@ -1,8 +1,8 @@
 package main
 
 import (
+	"go-demos/microservice/showtimes/routes"
 	"net/http"
-	"web-demo/microservice/showtimes/routes"
 )
 
 func main() {

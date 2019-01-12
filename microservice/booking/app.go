@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"go-demos/microservice/booking/routes"
+	"go-demos/microservice/dao"
+	"go-demos/microservice/messaging"
+	"go-demos/microservice/models"
 	"net/http"
-	"web-demo/microservice/booking/routes"
-	"web-demo/microservice/dao"
-	"web-demo/microservice/messaging"
-	"web-demo/microservice/models"
 
 	"github.com/globalsign/mgo/bson"
 	"github.com/streadway/amqp"

@@ -3,12 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"go-demos/microservice/dao"
+	"go-demos/microservice/helper"
+	"go-demos/microservice/messaging"
+	"go-demos/microservice/models"
 	"io/ioutil"
 	"net/http"
-	"web-demo/microservice/dao"
-	"web-demo/microservice/helper"
-	"web-demo/microservice/messaging"
-	"web-demo/microservice/models"
 
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
