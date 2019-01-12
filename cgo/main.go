@@ -1,11 +1,11 @@
 package main
 
 import (
+	"go-demos/cgo/cgo"
+	"go-demos/cgo/controller"
 	"log"
 	"net/http"
 	"time"
-	"web-demo/cgo/cgo"
-	"web-demo/cgo/controller"
 )
 
 func main() {

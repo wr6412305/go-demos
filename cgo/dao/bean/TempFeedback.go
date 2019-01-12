@@ -1,6 +1,6 @@
 package bean
 
-import "web-demo/cgo/entity"
+import "go-demos/cgo/entity"
 
 type TempFeedback struct {
 	entity.Feedback

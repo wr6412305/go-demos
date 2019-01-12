@@ -2,9 +2,9 @@ package cgo
 
 import (
 	"fmt"
+	"go-demos/cgo/constant"
 	"net/http"
 	"strings"
-	"web-demo/cgo/constant"
 )
 
 var Router *RouterHandler = new(RouterHandler)

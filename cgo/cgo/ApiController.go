@@ -1,9 +1,9 @@
 package cgo
 
 import (
+	"go-demos/cgo/constant"
+	"go-demos/cgo/entity"
 	"net/http"
-	"web-demo/cgo/constant"
-	"web-demo/cgo/entity"
 )
 
 type ApiController struct {

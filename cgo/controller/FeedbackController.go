@@ -1,11 +1,11 @@
 package controller
 
 import (
+	"go-demos/cgo/cgo"
+	"go-demos/cgo/constant"
+	"go-demos/cgo/service"
+	"go-demos/cgo/utils"
 	"net/http"
-	"web-demo/cgo/cgo"
-	"web-demo/cgo/constant"
-	"web-demo/cgo/service"
-	"web-demo/cgo/utils"
 )
 
 type FeedbackController struct {

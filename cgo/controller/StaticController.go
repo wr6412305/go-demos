@@ -1,9 +1,9 @@
 package controller
 
 import (
+	"go-demos/cgo/cgo"
+	"go-demos/cgo/constant"
 	"net/http"
-	"web-demo/cgo/cgo"
-	"web-demo/cgo/constant"
 )
 
 // 静态资源

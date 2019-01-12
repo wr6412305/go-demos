@@ -1,10 +1,10 @@
 package service
 
 import (
+	"go-demos/cgo/dao"
+	"go-demos/cgo/entity"
+	"go-demos/cgo/model"
 	"time"
-	"web-demo/cgo/dao"
-	"web-demo/cgo/entity"
-	"web-demo/cgo/model"
 )
 
 type FeedbackService struct {

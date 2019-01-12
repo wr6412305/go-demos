@@ -1,11 +1,11 @@
 package dao
 
 import (
+	"go-demos/cgo/cgo"
+	"go-demos/cgo/dao/bean"
+	"go-demos/cgo/entity"
+	"go-demos/cgo/model"
 	"log"
-	"web-demo/cgo/cgo"
-	"web-demo/cgo/dao/bean"
-	"web-demo/cgo/entity"
-	"web-demo/cgo/model"
 )
 
 type FeedbackDao struct {

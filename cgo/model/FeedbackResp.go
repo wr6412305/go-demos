@@ -1,6 +1,6 @@
 package model
 
-import "web-demo/cgo/entity"
+import "go-demos/cgo/entity"
 
 type FeedbackResp struct {
 	entity.Feedback

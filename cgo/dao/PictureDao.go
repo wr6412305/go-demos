@@ -1,9 +1,9 @@
 package dao
 
 import (
+	"go-demos/cgo/cgo"
+	"go-demos/cgo/entity"
 	"log"
-	"web-demo/cgo/cgo"
-	"web-demo/cgo/entity"
 )
 
 type PictureDao struct {

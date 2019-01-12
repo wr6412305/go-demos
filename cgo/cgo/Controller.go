@@ -1,13 +1,13 @@
 package cgo
 
 import (
+	"go-demos/cgo/constant"
+	"go-demos/cgo/utils"
 	"io"
 	"log"
 	"mime/multipart"
 	"net/http"
 	"os"
-	"web-demo/cgo/constant"
-	"web-demo/cgo/utils"
 )
 
 type Controller struct {

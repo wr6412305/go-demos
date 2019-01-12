@@ -1,9 +1,9 @@
 package service
 
 import (
+	"go-demos/cgo/dao"
+	"go-demos/cgo/entity"
 	"time"
-	"web-demo/cgo/dao"
-	"web-demo/cgo/entity"
 )
 
 type UserService struct {
