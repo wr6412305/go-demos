@@ -21,6 +21,7 @@ then
     echo "# version : 1.0" >> $FILENAME
     echo "" >> $FILENAME
     echo "" >> $FILENAME
+    echo "" >> $FILENAME
     echo "exit 0" >> $FILENAME
 else [ "$EXTNAME" == "c" ] || [ "$EXTNAME" == "cc" ] || [ "$EXTNAME" == "cpp" ] || [ "$EXTNAME" == "h" ] || [ "$EXTNAME" == "hpp" ]
     echo "" > $FILENAME
