@@ -7,8 +7,7 @@ import (
 )
 
 // github上一个人fork了github.com/garyburd/redigo/redis驱动，然后更新的一些bug
-
-func main() {
+func demo1() {
 	var client goredis.Client
 	// 端口为redis默认端口
 	client.Addr = "127.0.0.1:6379"
