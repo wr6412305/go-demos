@@ -9,7 +9,7 @@ import (
 
 // 使用database/sql接口对数据库表进行增删改查操作
 
-func mysql() {
+func demo() {
 	// user:password@/dbname
 	db, err := sql.Open("mysql", "root:ljs199711@/ljs?charset=utf8")
 	checkErr(err)
@@ -61,10 +61,4 @@ func mysql() {
 	affect, err = res.RowsAffected()
 	checkErr(err)
 	fmt.Println(affect)
-}
-
-func checkErr(err error) {
-	if err != nil {
-		panic(err)
-	}
 }

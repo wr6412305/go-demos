@@ -6,7 +6,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-// Model Struct
+// User define Model Struct
 type User struct {
 	Id   int
 	Name string `orm:"size(100)"`
@@ -25,7 +25,7 @@ func init() {
 	orm.RunSyncdb("default", false, true)
 }
 
-func mysql1() {
+func beegoOrm() {
 	o := orm.NewOrm()
 	user := User{Name: "ljs"}
 
