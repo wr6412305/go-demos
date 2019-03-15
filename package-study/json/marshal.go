@@ -37,7 +37,7 @@ func (pt Point) MarshalJSON() ([]byte, error) {
 	return []byte(fmt.Sprintf(`{"X":%d, "Y":%d}`, pt.X, pt.Y)), nil
 }
 
-func main() {
+func marshal() {
 	m := map[string][]string{
 		"level":   {"debug"},
 		"message": {"first not found", "Stack overflow"},

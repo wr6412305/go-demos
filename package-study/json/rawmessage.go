@@ -19,8 +19,7 @@ type Png struct {
 	Hight int
 }
 
-func main() {
-
+func rawmessage() {
 	input := `
     {
         "type": "File",

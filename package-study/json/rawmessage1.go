@@ -67,7 +67,7 @@ func printType(stu *StuRead) {
 	fmt.Println("testType:", testType)
 }
 
-func main() {
+func rawmessage1() {
 	// 使用原生字符串
 	data := `{
 		"name":"张三",
