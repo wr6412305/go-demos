@@ -1,11 +1,11 @@
 package main
 
 func main() {
-	// myio1()
-	// myio2()
-	// myio3()
-	// myio4()
-
+	// demo1()
+	// demo2()
+	// demo3()
+	// demo4()
+	// readDir()
 	// pipe1()
 	pipe2()
 }
