@@ -7,5 +7,6 @@ func main() {
 	// demo4()
 	// readDir()
 	// pipe1()
-	pipe2()
+	// pipe2()
+	pipe3()
 }
