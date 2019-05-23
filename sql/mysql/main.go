@@ -1,8 +1,8 @@
 package main
 
 func main() {
-	demo()
-	// beegoOrm()
+	// demo()
+	beegoOrm()
 }
 
 func checkErr(err error) {

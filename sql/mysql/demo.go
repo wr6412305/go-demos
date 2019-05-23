@@ -11,7 +11,7 @@ import (
 
 func demo() {
 	// user:password@/dbname
-	db, err := sql.Open("mysql", "root:ljs199711@/ljs?charset=utf8")
+	db, err := sql.Open("mysql", "root:password@/ljs?charset=utf8")
 	checkErr(err)
 	defer db.Close()
 

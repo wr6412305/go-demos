@@ -4,24 +4,26 @@ import (
 	"fmt"
 
 	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // User define Model Struct
 type User struct {
-	Id   int
+	ID   int
 	Name string `orm:"size(100)"`
 }
 
 func init() {
+	orm.RegisterDriver("mysql", orm.DRMySQL)
 	// 设置默认数据库
-	orm.RegisterDataBase("default", "mysql", "root:ljs199711@/ljs?charset=utf8", 30)
+	orm.RegisterDataBase("default", "mysql", "root:password@/ljs?charset=utf8", 30)
 
 	// 注册定义的model
 	orm.RegisterModel(new(User))
 	//RegisterModel 也可以同时注册多个 model
 	//orm.RegisterModel(new(User), new(Profile), new(Post))
 
-	// create table
+	// auto create table
 	orm.RunSyncdb("default", false, true)
 }
 
@@ -39,7 +41,7 @@ func beegoOrm() {
 	fmt.Printf("NUM: %d, ERR: %v\n", num, err)
 
 	// read one
-	u := User{Id: user.Id}
+	u := User{ID: user.ID}
 	err = o.Read(&u)
 	fmt.Printf("ERR: %v\n", err)
 
