@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 type user struct {
-	ID     int64
-	Name   string
-	Emails []string
+	ID        int64
+	Name      string
+	Emails    []string
+	tableName struct{} `sql:"users"`
 }
 
 func (u user) String() string {
@@ -13,10 +14,11 @@ func (u user) String() string {
 }
 
 type story struct {
-	ID       int64
-	Title    string
-	AuthorID int64
-	Author   *user
+	ID        int64
+	Title     string
+	AuthorID  int64
+	Author    *user
+	tableName struct{} `sql:"stories"`
 }
 
 func (s story) String() string {

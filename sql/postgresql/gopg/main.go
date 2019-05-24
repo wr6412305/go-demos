@@ -34,5 +34,10 @@ func main() {
 	// update()
 	// update1()
 	// createData()
-	query()
+	// query()
+	// apply()
+	// query1()
+	// query2()
+	// whereGroup()
+	whereIn()
 }
