@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/astaxie/beego/orm"
 
@@ -34,4 +35,12 @@ func main() {
 	stu.Age = 25
 
 	fmt.Println(o.Insert(stu))
+
+	var stu1 Student
+	err := o.QueryTable(&Student{}).Filter("age", 22).One(&stu1, "i_d", "name", "age")
+	if err != nil {
+		log.Println("===", err)
+		return
+	}
+	fmt.Printf("%+v\n", stu1)
 }
