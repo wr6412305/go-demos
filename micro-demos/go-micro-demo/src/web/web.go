@@ -82,6 +82,21 @@ func handleJSONRPC(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte(`<html><body><h1>` + rsp.String() + `</h1></body></html>`))
 			return
 
+		case "insertUser":
+			cl := pb.NewUserService(config.Namespace+"user", client.DefaultClient)
+			var p pb.InsertUserReq
+			err := decode.Decode(&p)
+			if err != nil {
+				log.Fatalln(err)
+			}
+			rsp, err := cl.InsertUser(context.Background(), &p)
+			if err != nil {
+				http.Error(w, err.Error(), 500)
+				return
+			}
+			w.Write([]byte(`<html><body><h1>` + rsp.String() + `</h1></body></html>`))
+			return
+
 		case "modifyUser":
 			cl := pb.NewUserService(config.Namespace+"user", client.DefaultClient)
 			var p pb.ModifyUserReq
