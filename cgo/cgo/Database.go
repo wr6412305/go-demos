@@ -11,7 +11,7 @@ import (
 //数据库的配置
 const (
 	username  = "root"
-	password  = "ljs199711"
+	password  = "password"
 	ip        = "127.0.0.1"
 	port      = "3306"
 	dbName    = "cgo"

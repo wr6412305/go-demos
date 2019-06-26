@@ -9,7 +9,7 @@ import (
 )
 
 func demo() {
-	db, err := sql.Open("postgres", "user=root password=ljs199711 dbname=root sslmode=disable")
+	db, err := sql.Open("postgres", "user=root password=password dbname=root sslmode=disable")
 	checkErr(err)
 	defer db.Close()
 
@@ -21,7 +21,7 @@ func demo() {
 }
 
 func sqlCreateTables() {
-	db, err := sql.Open("postgres", "user=root password=ljs199711 dbname=root sslmode=disable")
+	db, err := sql.Open("postgres", "user=root password=password dbname=root sslmode=disable")
 	checkErr(err)
 	defer db.Close()
 

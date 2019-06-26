@@ -9,7 +9,7 @@ import (
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", "root:ljs199711@tcp(localhost:3306)/05blog?charset=utf8")
+	orm.RegisterDataBase("default", "mysql", "root:password@tcp(localhost:3306)/05blog?charset=utf8")
 	orm.RegisterModel(new(class.User))
 	orm.RunSyncdb("default", false, true)
 }

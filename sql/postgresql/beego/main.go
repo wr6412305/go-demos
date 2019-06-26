@@ -18,7 +18,7 @@ type Student struct {
 
 func init() {
 	orm.RegisterDriver("postgres", orm.DRPostgres)
-	orm.RegisterDataBase("default", "postgres", "user=root password=ljs199711 dbname=root host=127.0.0.1 port=5432 sslmode=disable")
+	orm.RegisterDataBase("default", "postgres", "user=root password=password dbname=root host=127.0.0.1 port=5432 sslmode=disable")
 	orm.RegisterModel(new(Student))
 
 	// auto create table

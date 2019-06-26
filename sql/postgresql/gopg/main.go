@@ -6,7 +6,7 @@ const (
 	host     = "localhost"
 	port     = 5432
 	username = "root"
-	password = "ljs199711"
+	password = "password"
 	dbname   = "root"
 )
 

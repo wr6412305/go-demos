@@ -10,7 +10,7 @@ import (
 
 // GetConn ...
 func GetConn() *sql.DB {
-	// db, err := sql.Open("postgres", "user=root password=ljs199711 dbname=root sslmode=disable")
+	// db, err := sql.Open("postgres", "user=root password=password dbname=root sslmode=disable")
 	sqlURL := "postgres://postgres:postgres@localhost/postgres?sslmode=disable"
 	fmt.Println("----> get postgresql connection <----")
 	db, err := sql.Open("postgres", sqlURL)
