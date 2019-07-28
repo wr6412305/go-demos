@@ -5,5 +5,6 @@ func main() {
 	// reflect2()
 	// reflect3()
 	// reflect4()
-	reflect5()
+	// reflect5()
+	reflect6()
 }

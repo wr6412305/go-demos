@@ -37,17 +37,12 @@ func getMembers(i interface{}) {
 	}
 }
 
-type sr struct {
+type ss1 struct {
 	string
 }
 
-func (s sr) Read() {
-
-}
-
-func (s *sr) Write() {
-
-}
+func (s ss1) Read()   {}
+func (s *ss1) Write() {}
 
 func reflect1() {
 	// getMembers(&sr{})

@@ -10,12 +10,12 @@ type inf interface {
 	Method2()
 }
 
-type ss struct {
+type ss2 struct {
 	a func()
 }
 
-func (i ss) Method1() {}
-func (i ss) Method2() {}
+func (i ss2) Method1() {}
+func (i ss2) Method2() {}
 
 func test(t reflect.Type) {
 	if t.NumMethod() > 0 {
@@ -27,7 +27,7 @@ func test(t reflect.Type) {
 }
 
 func reflect2() {
-	s := reflect.TypeOf(ss{})
+	s := reflect.TypeOf(ss2{})
 	i := reflect.TypeOf(new(inf)).Elem()
 
 	test(s)

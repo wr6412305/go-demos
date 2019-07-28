@@ -7,7 +7,7 @@ import (
 )
 
 // 嵌套结构体
-type ss1 struct {
+type ss3 struct {
 	a struct {
 		int
 		string
@@ -18,8 +18,8 @@ type ss1 struct {
 	float64
 }
 
-func (s ss1) Method1(i int) string  { return "结构体方法1" }
-func (s *ss1) Method2(i int) string { return "结构体方法2" }
+func (s ss3) Method1(i int) string  { return "结构体方法1" }
+func (s *ss3) Method2(i int) string { return "结构体方法2" }
 
 var (
 	intValue   = int(0)
@@ -51,7 +51,7 @@ var (
 	sliceValue  = []byte{0, 0, 0, 0, 0} // 切片
 	mapValue    = map[string]int{}      // 映射
 	chanValue   = make(chan int, 2)     // 通道
-	structValue = ss1{                  // 结构体
+	structValue = ss3{                  // 结构体
 		struct {
 			int
 			string
