@@ -5,6 +5,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+// Product ...
 type Product struct {
 	gorm.Model
 	Code  string
