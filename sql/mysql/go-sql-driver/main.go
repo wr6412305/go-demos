@@ -2,7 +2,7 @@ package main
 
 func main() {
 	// demo()
-	beegoOrm()
+	demo1()
 }
 
 func checkErr(err error) {

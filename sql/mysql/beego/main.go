@@ -27,7 +27,7 @@ func init() {
 	orm.RunSyncdb("default", false, true)
 }
 
-func beegoOrm() {
+func main() {
 	o := orm.NewOrm()
 	user := User{Name: "ljs"}
 
