@@ -7,6 +7,3 @@
 - [thrift](https://studygolang.com/articles/12347)
 - [echo](https://www.tizi365.com/archives/28.html)
 - [iris](https://learnku.com/docs/iris-go/10)
-
-- [mysql](https://www.2cto.com/database/MySQL/)
-- [mysql](http://c.biancheng.net/mysql/)
