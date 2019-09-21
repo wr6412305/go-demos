@@ -1,4 +1,4 @@
-package apis
+package actions
 
 import (
 	"go-demos/gin-demo/go-sample/pkg"
@@ -8,7 +8,7 @@ import (
 )
 
 // Welcome ...
-// curl http://127.0.0.1:8080/welcome
+// curl http://127.0.0.1:8080/page/welcome
 func Welcome(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"code": 1,

@@ -1,4 +1,4 @@
-package apis
+package actions
 
 import (
 	"fmt"
@@ -12,9 +12,9 @@ import (
 // Login ...
 // url中使用&传递多参数，在linux系统中 &会使进程系统后台运行
 // 1.可以对&转义 \&
-// curl -s -X GET http://127.0.0.1:8080/login?name=ljs\&password=123456
+// curl -s -X POST http://127.0.0.1:8080/login?name=ljs\&password=123456
 // 用双引号把整个url引起来
-// curl -X GET "http://127.0.0.1:8080/login?name=ljs&password=123456"
+// curl -X POST "http://127.0.0.1:8080/login?name=ljs&password=123456"
 func Login(c *gin.Context) {
 	name := c.Request.FormValue("name")
 	password := c.Request.FormValue("password")
@@ -40,11 +40,11 @@ func Login(c *gin.Context) {
 	// } else {
 	// 	fmt.Println("session value:", sessionValue)
 	// }
-	c.String(200, "登录成功")
+	c.Redirect(http.StatusMovedPermanently, "/page/welcome")
 }
 
 // Logout ...
-// curl http://127.0.0.1:8080/logout
+// curl -X POST http://127.0.0.1:8080/logout
 func Logout(c *gin.Context) {
 	uid := pkg.GetSessionUserID(c)
 	fmt.Println("user id:", uid)
@@ -54,7 +54,7 @@ func Logout(c *gin.Context) {
 		return
 	}
 	pkg.ClearAuthSession(c)
-	c.String(200, "退出成功")
+	c.Redirect(http.StatusMovedPermanently, "/page/welcome")
 }
 
 // Register ...
@@ -85,7 +85,7 @@ func Register(c *gin.Context) {
 
 	models.AddUser(&user)
 	pkg.SaveAuthSession(c, user.ID)
-	c.String(200, "注册成功")
+	c.Redirect(http.StatusMovedPermanently, "/page/welcome")
 }
 
 // Me ...
@@ -95,5 +95,21 @@ func Me(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"code": 1,
 		"data": currentUser,
+	})
+}
+
+// LoginPage Index index
+func LoginPage(c *gin.Context) {
+	c.HTML(http.StatusOK, "page/login.html", gin.H{
+		"data":    "Main website",
+		"session": pkg.GetUserSession(c),
+	})
+}
+
+// RegisterPage Index index
+func RegisterPage(c *gin.Context) {
+	c.HTML(http.StatusOK, "page/register.html", gin.H{
+		"data":    "Main website",
+		"session": pkg.GetUserSession(c),
 	})
 }

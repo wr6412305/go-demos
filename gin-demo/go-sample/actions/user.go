@@ -1,4 +1,4 @@
-package apis
+package actions
 
 import (
 	"math"
