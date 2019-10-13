@@ -7,14 +7,19 @@ import (
 )
 
 func main() {
-	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
+	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
 	// 使用 LoadHTMLGlob() 或者 LoadHTMLFiles()
-	// router.LoadHTMLFiles("templates/template1.html", "templates/template2.html")
-	router.GET("/index", func(c *gin.Context) {
+	// r.LoadHTMLFiles("templates/template1.html", "templates/template2.html")
+	r.GET("/index", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl", gin.H{
 			"title": "Main website",
 		})
 	})
-	router.Run(":8080")
+
+	r.GET("/upload", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "upload.html", gin.H{})
+	})
+
+	r.Run("127.0.0.1:8080")
 }

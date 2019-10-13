@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -13,9 +14,9 @@ import (
 
 // User ...
 type User struct {
-	Username string
-	Passwd   string
-	Age      int
+	Username string `form:"username" json:"username" binding:"required"`
+	Passwd   string `form:"passwd" json:"passwd" binding:"required"`
+	Age      int    `form:"age" json:"age"`
 }
 
 func main() {
@@ -146,6 +147,8 @@ func main() {
 		}
 	})
 
+	// curl -X POST http://127.0.0.1:8080/login -d 'username=ljs&passwd=passwd&age=24' -H "Content-Type:application/x-www-form-urlencoded"
+	// curl -X POST http://127.0.0.1:8080/login -d '{"username":"ljs", "passwd":"passwd", "age":24}' -H "Content-Type:application/json"
 	r.POST("/login", func(c *gin.Context) {
 		var user User
 		var err error
@@ -155,12 +158,14 @@ func main() {
 		case "application/json":
 			err = c.BindJSON(&user)
 		case "application/x-www-form-urlencoded":
-			err = c.BindWith(&user, binding.Form)
+			// err = c.BindWith(&user, binding.Form)
+			err = c.ShouldBindWith(&user, binding.Form)
 		}
-
 		if err != nil {
-			fmt.Println(err)
-			log.Fatal(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"err": err,
+			})
+			return
 		}
 
 		c.JSON(http.StatusOK, gin.H{
@@ -170,14 +175,18 @@ func main() {
 		})
 	})
 
-	// 自动Bind
+	// 自动推断content-type是form还是json
+	// curl -X POST http://127.0.0.1:8080/loginBind -d 'username=ljs&passwd=passwd&age=24'
+	// curl -X POST http://127.0.0.1:8080/loginBind -d '{"username":"ljs", "passwd":"passwd", "age":24}' -H "Content-Type:application/json"
 	r.POST("/loginBind", func(c *gin.Context) {
 		var user User
 
 		err := c.Bind(&user)
 		if err != nil {
-			fmt.Println(err)
-			log.Fatal(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"err": err,
+			})
+			return
 		}
 
 		c.JSON(http.StatusOK, gin.H{
@@ -187,7 +196,8 @@ func main() {
 		})
 	})
 
-	// curl http://127.0.0.1:8080/render
+	// curl http://127.0.0.1:8080/render?content_type=xml
+	// curl http://127.0.0.1:8080/render?content_type=json
 	r.GET("/render", func(c *gin.Context) {
 		contentType := c.DefaultQuery("content_type", "json")
 		if contentType == "json" {
@@ -203,16 +213,20 @@ func main() {
 		}
 	})
 
-	//重定向
+	// 重定向
 	// curl http://127.0.0.1:8080/redict/baidu
 	r.GET("/redict/baidu", func(c *gin.Context) {
 		c.Redirect(http.StatusMovedPermanently, "https://baidu.com")
 	})
 
-	// 全局中间件
+	// 全局中间件 注意在router.Use(MiddleWare())代码以上的路由函数，将不会有被中间件装饰的效果
+	// curl http://127.0.0.1:8080/middleware
+	// 使用花括号包含被装饰的路由函数只是一个代码规范，即使没有被包含在内的路由函数，
+	// 只要使用router进行路由，都等于被装饰了。想要区分权限范围，可以使用组返回的对象注册中间件
 	r.Use(MiddleWare())
 	{
 		r.GET("/middleware", func(c *gin.Context) {
+			// 如果没有注册就使用MustGet方法读取c的值将会抛错，可以使用Get方法取而代之
 			request := c.MustGet("request").(string)
 			req, _ := c.Get("request")
 			c.JSON(http.StatusOK, gin.H{
@@ -222,7 +236,7 @@ func main() {
 		})
 	}
 
-	//单个路由中间件
+	// 单个路由中间件
 	r.GET("/before", MiddleWare(), func(c *gin.Context) {
 		request := c.MustGet("request").(string)
 		c.JSON(http.StatusOK, gin.H{
@@ -230,7 +244,7 @@ func main() {
 		})
 	})
 
-	//鉴权中间件
+	// 鉴权中间件
 	r.GET("/auth/signin", func(c *gin.Context) {
 		cookie := &http.Cookie{
 			Name:     "session_id",
@@ -246,8 +260,22 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "home"})
 	})
 
-	// Handle all requests using net/http
-	http.Handle("/", r)
+	// gin里可以借助协程实现异步任务。因为涉及异步过程，请求的上下文需要copy
+	// 到异步的上下文，并且这个上下文是只读的
+	// curl http://127.0.0.1:8080/sync
+	r.GET("/sync", func(c *gin.Context) {
+		time.Sleep(2 * time.Second)
+		log.Println("Done! in path" + c.Request.URL.Path)
+	})
+
+	// curl http://127.0.0.1:8080/async
+	r.GET("/async", func(c *gin.Context) {
+		cCp := c.Copy()
+		go func() {
+			time.Sleep(2 * time.Second)
+			log.Println("Done! in path" + cCp.Request.URL.Path)
+		}()
+	})
 
 	r.Run("127.0.0.1:8080")
 }
