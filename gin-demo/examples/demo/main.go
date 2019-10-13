@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -35,7 +37,22 @@ func main() {
 		c.String(http.StatusOK, "hello %s\n", name)
 	})
 
-	// curl -X POST http://127.0.0.1:8080/form_post -d 'message=ljs&nick=ljs'
+	// curl http://127.0.0.1:8080/welcome
+	// curl http://127.0.0.1:8080/welcome/   not match
+	// curl -s 'http://127.0.0.1:8080/welcome?firstname=ljs&lastname=ljs'
+	// curl -s 'http://127.0.0.1:8080/welcome?firstname=ljs'
+	// curl -s 'http://127.0.0.1:8080/welcome?lastname=ljs'
+	// curl -s 'http://127.0.0.1:8080/welcome?firstname=中国'
+	// curl -s 'http://127.0.0.1:8080/welcome?lastname=中国'
+	r.GET("/welcome", func(c *gin.Context) {
+		firstname := c.DefaultQuery("firstname", "Guest")
+		lastname := c.Query("lastname")
+
+		c.String(http.StatusOK, "Hello %s %s\n", firstname, lastname)
+	})
+
+	// curl -X POST http://127.0.0.1:8080/form_post -H "Content-Type:application/x-www-form-urlencoded" -d 'message=ljs&nick=ljs'
+	// curl -X POST http://127.0.0.1:8080/form_post -H "Content-Type:application/x-www-form-urlencoded" -d 'message=ljs&nick=ljs' | python -m json.tool
 	r.POST("/form_post", func(c *gin.Context) {
 		message := c.PostForm("message")
 		nick := c.DefaultPostForm("nick", "anonymous")
@@ -62,37 +79,70 @@ func main() {
 		})
 	})
 
-	// curl -d 'name=ljs' -F 'upload=@ljs' -X POST http://127.0.0.1:8080/upload
+	// curl -X POST http://127.0.0.1:8080/upload -F 'upload=@/root/gopath/src/go-demos/gin-demo/ljs.txt' -H "Content-Type:multipart/form-data"
+	// curl -X POST http://127.0.0.1:8080/upload -d 'name=ljs'
 	r.POST("/upload", func(c *gin.Context) {
-		name := c.PostForm("name")
-		fmt.Println(name)
+		// name := c.PostForm("name")
+		// fmt.Println("name:", name)
+		// 使用c.Request.FormFile解析客户端文件name属性
 		file, header, err := c.Request.FormFile("upload")
 		if err != nil {
 			c.String(http.StatusBadRequest, "Bad request")
 			return
 		}
 		filename := header.Filename
-		fmt.Println(file, err, filename)
+		// fmt.Println(file, err, filename)
+
+		out, err := os.Create(filename)
+		if err != nil {
+			c.String(http.StatusInternalServerError, "create file fail", err)
+			return
+		}
+		defer out.Close()
+
+		_, err = io.Copy(out, file)
+		if err != nil {
+			c.String(http.StatusInternalServerError, "copy file fail", err)
+			return
+		}
+
 		c.String(http.StatusCreated, "upload successful")
 	})
 
+	// curl -X POST http://127.0.0.1:8080/multi/upload -F 'upload=@/root/gopath/src/go-demos/gin-demo/ljs.txt' -F 'upload=@/root/gopath/src/go-demos/gin-demo/ljs1.txt' -H "Content-Type:multipart/form-data"
 	r.POST("/multi/upload", func(c *gin.Context) {
+		// 与单个文件上传类似，只不过使用了c.Request.MultipartForm得到文件句柄
+		// 再获取文件数据，然后遍历读写
 		err := c.Request.ParseMultipartForm(200000)
 		if err != nil {
-			log.Fatal(err)
+			c.String(http.StatusBadRequest, "Bad request\n")
+			return
 		}
 
 		formdata := c.Request.MultipartForm
 		files := formdata.File["upload"]
 		for i := range files {
 			file, err := files[i].Open()
-			filename := files[i].Filename
-			fmt.Println(file, err, filename)
 			defer file.Close()
 			if err != nil {
-				log.Fatal(err)
+				c.String(http.StatusInternalServerError, "open file fail\n")
+				return
 			}
-			c.String(http.StatusCreated, "upload successful")
+
+			out, err := os.Create(files[i].Filename)
+			defer out.Close()
+			if err != nil {
+				c.String(http.StatusInternalServerError, "create file fail\n")
+				return
+			}
+
+			_, err = io.Copy(out, file)
+			if err != nil {
+				c.String(http.StatusInternalServerError, "copy file fail\n")
+				return
+			}
+
+			c.String(http.StatusCreated, "upload successful\n")
 		}
 	})
 
