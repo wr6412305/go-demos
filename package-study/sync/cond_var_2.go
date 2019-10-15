@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func main() {
+func cond4() {
 	condition := false // 条件不满足
 	var mu sync.Mutex
 	cond := sync.NewCond(&mu) // 创建一个条件变量

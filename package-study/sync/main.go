@@ -1,9 +1,11 @@
 package main
 
 func main() {
-	// once1()
-	// mutex1()
+	// once()
+	// mutex()
 	// cond1()
 	// cond2()
-	cond3()
+	// cond3()
+	// workerPool()
+	// waitgroup()
 }

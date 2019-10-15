@@ -1,22 +1,22 @@
 package main
 
 import (
-	"time"
-	"sync"
-	"math/rand"
 	"fmt"
+	"math/rand"
+	"sync"
+	"time"
 )
 
-// 定义工作结构体
+// Job ...
 type Job struct {
-	id 			int
-	randomno	int
+	id       int
+	randomno int
 }
 
-// 结果结构体
+// Result ...
 type Result struct {
-	job			Job
-	sumofdigits	int
+	job         Job
+	sumofdigits int
 }
 
 var jobs = make(chan Job, 10)
@@ -40,7 +40,7 @@ func worker(wg *sync.WaitGroup) {
 		output := Result{job, digits(job.randomno)}
 		results <- output
 	}
-	wg.Done()		// 引用计数减1
+	wg.Done() // 引用计数减1
 }
 
 func createWorkerPool(noOfWorkers int) {
@@ -50,7 +50,7 @@ func createWorkerPool(noOfWorkers int) {
 		go worker(&wg)
 	}
 	wg.Wait()
-	close(results)		// 所有协程结束后，关闭输出结果信道
+	close(results) // 所有协程结束后，关闭输出结果信道
 }
 
 // 分配工作协程
@@ -60,7 +60,7 @@ func allocate(noOfJobs int) {
 		job := Job{i, ranodmno}
 		jobs <- job
 	}
-	close(jobs)		// 所有工作分配完后，关闭输入工作信道
+	close(jobs) // 所有工作分配完后，关闭输入工作信道
 }
 
 // 读取结果协程
@@ -69,11 +69,10 @@ func result(done chan bool) {
 		fmt.Printf("Job id %d, input random no %d, sum of digits %d\n",
 			result.job.id, result.job.randomno, result.sumofdigits)
 	}
-	done <- true	// 所有结果读取完成后，给主协程发个通知
+	done <- true // 所有结果读取完成后，给主协程发个通知
 }
 
-// 主协程
-func main() {
+func workerPool() {
 	startTime := time.Now()
 	noOfJobs := 100
 	go allocate(noOfJobs)
@@ -81,7 +80,7 @@ func main() {
 	go result(done)
 	noOfWorkers := 10
 	createWorkerPool(noOfWorkers)
-	<- done			// 主协程等待读取结果协程将所有结果读取完毕
+	<-done // 主协程等待读取结果协程将所有结果读取完毕
 
 	endTime := time.Now()
 	diff := endTime.Sub(startTime)

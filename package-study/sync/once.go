@@ -10,7 +10,7 @@ import (
 // 以后再执行 Once.Do() 将没有任何动作，即使传入了其它的函数，也不会被执行，
 // 如果要执行其它函数，需要重新创建一个 Once 对象
 
-func once1() {
+func once() {
 	var once sync.Once
 	onceBody := func() {
 		fmt.Println("Only once")

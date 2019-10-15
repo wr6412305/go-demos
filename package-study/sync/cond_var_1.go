@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-const MAX_CLIENTS = 3
+const maxClients = 3
 
 func cond3() {
 	runtime.GOMAXPROCS(4)
@@ -33,21 +33,24 @@ func testCond3() {
 	fmt.Println("[testCond] end.")
 }
 
+// Server ...
 type Server struct {
 	clients uint64
 	cond    *sync.Cond
 }
 
+// NewServer ...
 func NewServer() *Server {
 	s := &Server{}
 	s.cond = sync.NewCond(&sync.Mutex{})
 	return s
 }
 
+// IOloop ...
 func (s *Server) IOloop() {
 	for {
 		s.cond.L.Lock()
-		for s.clients == MAX_CLIENTS {
+		for s.clients == maxClients {
 			fmt.Println("[IOloop] 等于MAX_CLIENTS了,等待Cond通知.即有触发Release()")
 			s.cond.Wait()
 		}
@@ -57,6 +60,7 @@ func (s *Server) IOloop() {
 	}
 }
 
+// Release ...
 func (s *Server) Release() {
 	s.cond.L.Lock()
 	s.clients--

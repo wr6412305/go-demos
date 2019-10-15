@@ -10,7 +10,7 @@ type safeInt struct {
 	Num int
 }
 
-func mutex1() {
+func mutex() {
 	count := safeInt{}
 	done := make(chan bool)
 	for i := 0; i < 10; i++ {
