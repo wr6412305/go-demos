@@ -28,5 +28,5 @@
 -- );
 
 -- alter table tb_dept1 add constraint unique_name unique(name);
-desc tb_dept1;
+-- desc tb_dept1;
 -- alter table tb_dept1 drop index unique_name;
