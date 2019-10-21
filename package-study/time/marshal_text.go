@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func marshalText() {
 	// 可见Marshal类的函数只是提供一个将时间t序列化为[]byte数组的功能，
 	// 利用UnMarshal类的函数可以获取到原来的时间t
 	a := time.Now()

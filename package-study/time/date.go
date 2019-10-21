@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func date() {
 	p := fmt.Println
 	now := time.Now()
 	p(now)

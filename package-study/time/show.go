@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func show() {
 	layout := "01__02-2006 3.04.05 PM" // 指定自己的时间格式
 	fmt.Println(time.Now().Format(layout))
 	fmt.Println(time.Now().Format(time.ANSIC))
