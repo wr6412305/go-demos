@@ -1,30 +1,62 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"sync"
+	"time"
 )
 
 func cond4() {
-	condition := false // 条件不满足
-	var mu sync.Mutex
-	cond := sync.NewCond(&mu) // 创建一个条件变量
+	var mailbox uint8 // 信箱，0 表示空，1 表示满
+	var lock sync.RWMutex
+	sendCond := sync.NewCond(&lock) // 参数为 lock 的指针值
+	recvCond := sync.NewCond(&lock)
 
-	// 协程创造条件
-	go func() {
-		mu.Lock()
-		condition = true // 更改条件
-		cond.Signal()    // 发送通知：条件已经满足
-		mu.Unlock()
-	}()
+	signal := make(chan struct{}, 3)
+	max := 3
 
-	mu.Lock()
-	// 检查条件是否满足，避免虚假通知，同时避免 Signal 提前于 Wait 执行
-	for !condition {
-		// 等待条件满足的通知，如果收到虚假通知，则循环继续等待
-		cond.Wait() // 等待时 mu 处于解锁状态，唤醒时重新锁定
-	}
+	// 发信
+	go func(max int) {
+		defer func() {
+			signal <- struct{}{}
+		}()
 
-	fmt.Println("条件满足，开始后续动作...")
-	mu.Unlock()
+		for i := 0; i < max; i++ {
+			time.Sleep(time.Millisecond * 500)
+			lock.Lock()        // 锁住信箱
+			for mailbox == 1 { // 信箱满
+				sendCond.Wait() // 等待信箱空
+			}
+			log.Printf("sender [%d]: the mailbox is empty.", i)
+			mailbox = 1 // 发信，信箱满
+			log.Printf("sender [%d]: the mailbox has been sent.", i)
+			lock.Unlock()     // 解锁信箱
+			recvCond.Signal() // 通知接受者
+		}
+	}(max)
+
+	// 收信
+	go func(max int) {
+		defer func() {
+			signal <- struct{}{}
+		}()
+
+		for i := 0; i < max; i++ {
+			time.Sleep(time.Millisecond * 500)
+			// lock.RLock() // panic
+			lock.Lock()
+			for mailbox == 0 {
+				recvCond.Wait()
+			}
+			log.Printf("receiver [%d]: the mailbox is full.", i)
+			mailbox = 0
+			log.Printf("receiver [%d]: the letter has been received.", i)
+			// lock.RUnlock()
+			lock.Unlock()
+			sendCond.Signal()
+		}
+	}(max)
+
+	<-signal
+	<-signal
 }
