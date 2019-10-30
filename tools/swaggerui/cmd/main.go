@@ -38,6 +38,9 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rakyll/statik/fs"
+
+	_ "go-demos/tools/swaggerui/cmd/statik"
+	_ "go-demos/tools/swaggerui/cmd/swagger"
 )
 
 func main() {
@@ -51,7 +54,7 @@ func main() {
 	sh := http.StripPrefix("/swaggerui/", staticServer)
 	router.PathPrefix("/swaggerui/").Handler(sh)
 	registerV1Routes(router)
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe("127.0.0.1:8080", router))
 }
 
 func registerV1Routes(r *mux.Router) {
