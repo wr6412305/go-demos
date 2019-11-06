@@ -6,7 +6,8 @@ func main() {
 	// cond1()
 	// cond2()
 	// cond3()
-	cond4()
+	// cond4()
 	// workerPool()
 	// waitgroup()
+	syncMap()
 }
