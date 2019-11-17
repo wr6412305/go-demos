@@ -40,4 +40,4 @@
 -- select * from view_tb_courses;
 -- select * from tb_courses;
 
-SHOW CREATE VIEW view_tb_courses;
+-- SHOW CREATE VIEW view_tb_courses;
