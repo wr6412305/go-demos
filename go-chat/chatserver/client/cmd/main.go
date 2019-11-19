@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"log"
+	"time"
 
-	"go-demos/socket/chatserver/client"
-	"go-demos/socket/chatserver/tui"
+	"go-demos/go-chat/chatserver/client"
 )
 
 func main() {
@@ -22,5 +22,8 @@ func main() {
 	// start the client to listen for incoming message
 	go client.Start()
 
-	tui.StartUI(client)
+	time.Sleep(3 * time.Second)
+	client.SetName("ljs")
+
+	select {}
 }

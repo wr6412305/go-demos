@@ -1,7 +1,7 @@
 package protocol_test
 
 import (
-	"go-demos/socket/chatserver/protocol"
+	"go-demos/go-chat/chatserver/protocol"
 	"reflect"
 	"strings"
 	"testing"

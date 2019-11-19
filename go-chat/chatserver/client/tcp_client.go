@@ -1,7 +1,7 @@
 package client
 
 import (
-	"go-demos/socket/chatserver/protocol"
+	"go-demos/go-chat/chatserver/protocol"
 	"log"
 	"net"
 )

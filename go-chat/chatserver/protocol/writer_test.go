@@ -2,7 +2,7 @@ package protocol_test
 
 import (
 	"bytes"
-	"go-demos/socket/chatserver/protocol"
+	"go-demos/go-chat/chatserver/protocol"
 	"testing"
 )
 

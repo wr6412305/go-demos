@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"go-demos/socket/chatserver/client"
+	"go-demos/go-chat/chatserver/client"
 
 	tui "github.com/marcusolsson/tui-go"
 )

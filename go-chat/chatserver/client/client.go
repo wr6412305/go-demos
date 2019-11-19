@@ -1,7 +1,7 @@
 package client
 
 import (
-	"go-demos/socket/chatserver/protocol"
+	"go-demos/go-chat/chatserver/protocol"
 )
 
 // ChatClient 客户端通过Dial()连接到服务端，Start() Close()负责停止和关闭服务

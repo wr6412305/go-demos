@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-demos/socket/chatserver/server"
+	"go-demos/go-chat/chatserver/server"
 )
 
 func main() {

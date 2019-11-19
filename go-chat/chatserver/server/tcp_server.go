@@ -2,7 +2,7 @@ package server
 
 import (
 	"errors"
-	"go-demos/socket/chatserver/protocol"
+	"go-demos/go-chat/chatserver/protocol"
 	"io"
 	"log"
 	"net"
