@@ -1,6 +1,8 @@
 package main
 
 func main() {
-	watch1()
+	// watch1()
 	// get1()
+	// curd1()
+	lease1()
 }
