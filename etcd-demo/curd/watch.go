@@ -39,3 +39,37 @@ func watch1() {
 		}
 	}
 }
+
+func watch2() {
+	var (
+		client *clientv3.Client
+		err    error
+	)
+
+	config := clientv3.Config{
+		Endpoints:   []string{"127.0.0.1:2379"},
+		DialTimeout: 5 * time.Second,
+	}
+	if client, err = clientv3.New(config); err != nil {
+		log.Println(err.Error())
+		return
+	}
+
+	ctxWithTimeout, cancelFunc := context.WithCancel(context.TODO())
+	wch := client.Watch(ctxWithTimeout, "/cron/watch/job1")
+
+	// 20 秒后调用取消函数关闭通道退出监控键 /cron/watch/job1
+	tt := time.After(20 * time.Second)
+	go func() {
+		select {
+		case <-tt:
+			cancelFunc()
+		}
+	}()
+
+	for resp := range wch {
+		for _, res := range resp.Events {
+			log.Println(res.Type, string(res.Kv.Key), string(res.Kv.Value))
+		}
+	}
+}
