@@ -2,11 +2,14 @@ package main
 
 import (
 	"bytes"
+	"crypto/tls"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 func postJSON() {
@@ -87,6 +90,53 @@ func postForm() {
 
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Println(string(body))
+}
+
+var httpClient = &http.Client{
+	Transport: &http.Transport{
+		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true},
+		DisableCompression:  true,
+		MaxIdleConnsPerHost: 50,
+	},
+	Timeout: time.Duration(30) * time.Second,
+}
+
+// Post ...
+func Post(url string, header map[string]string, data map[string]interface{}) ([]byte, error) {
+	var err error
+	var req *http.Request
+	var resp *http.Response
+	var reqBody []byte
+	var respBody []byte
+
+	reqBody, err = json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+	if req, err = http.NewRequest("POST", url, bytes.NewReader(reqBody)); err != nil {
+		return nil, err
+	}
+
+	if len(header) > 0 {
+		for key, value := range header {
+			req.Header.Add(key, value)
+		}
+	}
+
+	if resp, err = httpClient.Do(req); err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("ErrCode:%d, with %s => %#v", resp.StatusCode, url, data)
+	}
+
+	respBody, err = ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	return respBody, nil
 }
 
 func main() {
