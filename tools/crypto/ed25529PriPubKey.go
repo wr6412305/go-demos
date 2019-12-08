@@ -22,19 +22,18 @@ func ed25519PriPubKey() {
 	fmt.Println(hex.EncodeToString(pub[:ed25519.PublicKeySize]))
 	fmt.Print("pri:")
 	fmt.Println(hex.EncodeToString(pri[:ed25519.PrivateKeySize]))
-	fmt.Println()
 
-	priKey := new([ed25519.PrivateKeySize]byte)
-	strPriKey := "11ec18b7cffacfb46c57e027bd63f6558a78ec4ee4e929c07c6d9c68eb42c218"
-	_priKey, _ := hex.DecodeString(strPriKey)
-	copy(priKey[:32], _priKey)
+	// priKey := new([ed25519.PrivateKeySize]byte)
+	// strPriKey := "11ec18b7cffacfb46c57e027bd63f6558a78ec4ee4e929c07c6d9c68eb42c218"
+	// _priKey, _ := hex.DecodeString(strPriKey)
+	// copy(priKey[:32], _priKey)
 
-	pubKey := ed25519.Edwards25519Pubkey(priKey)
+	// pubKey := ed25519.Edwards25519Pubkey(priKey)
 	// 15764cd017e0da753271fa26cd529451a21b8253d001f0d43612e19ec632570a
-	fmt.Print("pub:")
-	fmt.Println(hex.EncodeToString(pubKey[:]))
-	fmt.Print("pri:")
-	fmt.Println(hex.EncodeToString(priKey[:]))
+	// fmt.Print("pub:")
+	// fmt.Println(hex.EncodeToString(pubKey[:]))
+	// fmt.Print("pri:")
+	// fmt.Println(hex.EncodeToString(priKey[:]))
 }
 
 func extra25519PriPub() {
@@ -61,6 +60,4 @@ func extra25519PriPub() {
 	curve25519.ScalarBaseMult(&curve25519Public, &curve25519Private)
 	fmt.Print("curvepub:")
 	fmt.Println(hex.EncodeToString(curve25519Public[:]))
-
-	// extra25519.PublicKeyToCurve25519(&curve25519Public2, public)
 }
