@@ -1,75 +1,81 @@
 package main
 
 import (
+	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
-	"fmt"
-	"os"
 )
 
 var commonIV = []byte{0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f}
 
 // AesCFBCrypto ...
-func AesCFBCrypto(plain, key string) (dst string, err error) {
+func AesCFBCrypto(plain, key []byte) (dst []byte, err error) {
 	var c cipher.Block
 	c, err = aes.NewCipher([]byte(key))
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	cfb := cipher.NewCFBEncrypter(c, commonIV)
 	ciphertext := make([]byte, len(plain))
 	cfb.XORKeyStream(ciphertext, []byte(plain))
-	return string(ciphertext), nil
+	return ciphertext, nil
 }
 
 // AesCFBDecrypto ...
-func AesCFBDecrypto(src, key string) (dst string, err error) {
+func AesCFBDecrypto(src, key []byte) (dst []byte, err error) {
 	var c cipher.Block
 	c, err = aes.NewCipher([]byte(key))
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	cfb := cipher.NewCFBDecrypter(c, commonIV)
 	plain := make([]byte, len(src))
 	cfb.XORKeyStream(plain, []byte(src))
-	return string(plain), nil
+	return plain, nil
 }
 
-// Aes ...
-func Aes(src string) {
-	// 需要去加密的字符串
-	plaintext := []byte("My name is Astaxie")
-	//如果传入加密串的话，plaint就是传入的字符串
-	if len(os.Args) > 1 {
-		plaintext = []byte(os.Args[1])
-	}
+// PKCS5Padding ...
+func PKCS5Padding(ciphertext []byte, blockSize int) []byte {
+	padding := blockSize - len(ciphertext)%blockSize
+	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+	return append(ciphertext, padtext...)
+}
 
-	//aes的加密字符串
-	keyText := "astaxie12798akljzmknm.ahkjkljl;k"
-	if len(os.Args) > 2 {
-		keyText = os.Args[2]
-	}
+// PKCS5UnPadding ...
+func PKCS5UnPadding(origData []byte) []byte {
+	length := len(origData)
+	unpadding := int(origData[length-1])
+	return origData[:(length - unpadding)]
+}
 
-	fmt.Println(len(keyText))
-
-	// 创建加密算法aes
-	c, err := aes.NewCipher([]byte(keyText))
+// AesCBCEncrypt ...
+func AesCBCEncrypt(origData, key []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
 	if err != nil {
-		fmt.Printf("Error: NewCipher(%d bytes) = %s", len(keyText), err)
-		os.Exit(-1)
+		return nil, err
 	}
 
-	// 加密字符串
-	cfb := cipher.NewCFBEncrypter(c, commonIV)
-	ciphertext := make([]byte, len(plaintext))
-	cfb.XORKeyStream(ciphertext, plaintext)
-	fmt.Printf("%s=>%x\n", plaintext, ciphertext)
+	blockSize := block.BlockSize()
+	origData = PKCS5Padding(origData, blockSize)
+	blockMode := cipher.NewCBCEncrypter(block, key[:blockSize])
+	crypted := make([]byte, len(origData))
+	blockMode.CryptBlocks(crypted, origData)
+	return crypted, nil
+}
 
-	// 解密字符串
-	cfbdec := cipher.NewCFBDecrypter(c, commonIV)
-	plaintextCopy := make([]byte, len(plaintext))
-	cfbdec.XORKeyStream(plaintextCopy, ciphertext)
-	fmt.Printf("%x=>%s\n", ciphertext, plaintextCopy)
+// AesCBCDecrypt ...
+func AesCBCDecrypt(crypted, key []byte) ([]byte, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	blockSize := block.BlockSize()
+	blockMode := cipher.NewCBCDecrypter(block, key[:blockSize])
+	origData := make([]byte, len(crypted))
+	blockMode.CryptBlocks(origData, crypted)
+	origData = PKCS5UnPadding(origData)
+	return origData, nil
 }
