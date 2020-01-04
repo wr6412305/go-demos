@@ -8,9 +8,9 @@ import (
 
 // 定义一组常量
 const (
-	redisIP   = "127.0.0.1"
+	redisIP   = "117.51.148.112"
 	redisPort = "6379"
-	redisPwd  = ""
+	redisPwd  = "password"
 	redisDB   = 0
 )
 
@@ -33,7 +33,7 @@ func main() {
 		}
 	}()
 
-	// base()
+	base()
 	// strings()
 	// hash()
 	// list()
