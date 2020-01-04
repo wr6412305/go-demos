@@ -12,13 +12,13 @@ import (
 )
 
 // Address kafka cluster addresses
-var Address = []string{"127.0.0.1:9092"}
+var Address = []string{"117.51.148.112:9092"}
 
 func main() {
 	topic := []string{"test"}
 	var wg = &sync.WaitGroup{}
-	wg.Add(2)
-	//广播式消费：消费者1
+	wg.Add(1)
+	// 广播式消费:消费者1
 	go clusterConsumer(wg, Address, topic, "group-1")
 
 	wg.Wait()
