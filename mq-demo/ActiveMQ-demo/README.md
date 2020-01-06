@@ -14,3 +14,5 @@ cd activemq-5.15.10/bin
 ./activemq stop
 ./activemq status
 ```
+
+ActiveMQ 后台管理页面 <http://117.51.148.112:8161/admin>

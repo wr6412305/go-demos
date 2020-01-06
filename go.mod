@@ -11,6 +11,7 @@ require (
 	github.com/go-pg/pg v8.0.6+incompatible
 	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
+	github.com/go-stomp/stomp v2.0.3+incompatible
 	github.com/gogo/protobuf v1.3.1
 	github.com/jcmturner/gofork v1.0.0 // indirect
 	github.com/jinzhu/gorm v1.9.11
