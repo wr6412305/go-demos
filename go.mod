@@ -4,7 +4,9 @@ go 1.13
 
 require (
 	github.com/Shopify/sarama v1.24.1
+	github.com/apache/rocketmq-client-go v1.2.4
 	github.com/bsm/sarama-cluster v2.1.15+incompatible
+	github.com/bwmarrin/snowflake v0.3.0
 	github.com/confluentinc/confluent-kafka-go v1.3.0 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/gin-gonic/gin v1.5.0
