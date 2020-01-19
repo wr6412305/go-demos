@@ -14,7 +14,7 @@ nohup /usr/local/kafka_2.11-2.4.0/bin/kafka-server-start.sh /usr/local/kafka_2.1
 /usr/local/kafka_2.11-2.4.0/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 
 消费 topic
-/usr/local/kafka_2.11-2.4.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+/usr/local/kafka_2.11-2.4.0/bin/kafka-console-consumer.sh --bootstrap-server 117.51.148.112:9092 --topic test --from-beginning
 
 生产消息
-/usr/local/kafka_2.11-2.4.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+/usr/local/kafka_2.11-2.4.0/bin/kafka-console-producer.sh --broker-list 117.51.148.112:9092 --topic test
