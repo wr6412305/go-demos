@@ -23,6 +23,8 @@ require (
 	github.com/lib/pq v1.1.1
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
+	github.com/spf13/cobra v0.0.5 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	go.etcd.io/etcd v3.3.17+incompatible
 	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876 // indirect
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
