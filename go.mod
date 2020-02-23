@@ -21,6 +21,10 @@ require (
 	github.com/json-iterator/go v1.1.7
 	github.com/klauspost/compress v1.9.5 // indirect
 	github.com/lib/pq v1.1.1
+	github.com/mailru/easyjson v0.7.1 // indirect
+	github.com/nladuo/go-zk-fifo v0.0.0-20151228050926-7d50ad2d07f2
+	github.com/olivere/elastic v6.2.27+incompatible
+	github.com/olivere/elastic/v7 v7.0.11
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
 	github.com/spf13/cobra v0.0.5 // indirect
