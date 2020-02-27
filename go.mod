@@ -26,6 +26,7 @@ require (
 	github.com/olivere/elastic v6.2.27+incompatible
 	github.com/olivere/elastic/v7 v7.0.11
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
+	github.com/prometheus/client_golang v1.1.0
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
