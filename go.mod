@@ -11,6 +11,7 @@ require (
 	github.com/confluentinc/confluent-kafka-go v1.3.0 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/gin-gonic/gin v1.5.0
+	github.com/go-kit/kit v0.8.0
 	github.com/go-pg/pg v8.0.6+incompatible
 	github.com/go-redis/redis v6.15.6+incompatible
 	github.com/go-sql-driver/mysql v1.4.1
@@ -31,6 +32,7 @@ require (
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.etcd.io/etcd v3.3.17+incompatible
+	go.uber.org/zap v1.12.0
 	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876 // indirect
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
 	gopkg.in/confluentinc/confluent-kafka-go.v1 v1.1.0
