@@ -4,10 +4,11 @@ package main
 
 import (
 	"fmt"
-	"go-demos/go-kit-demo/v1/v1endpoint"
-	"go-demos/go-kit-demo/v1/v1service"
-	"go-demos/go-kit-demo/v1/v1transport"
 	"net/http"
+
+	"v1/v1endpoint"
+	"v1/v1service"
+	"v1/v1transport"
 )
 
 func main() {

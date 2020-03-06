@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"go-demos/go-kit-demo/v1/v1endpoint"
-	"go-demos/go-kit-demo/v1/v1service"
+	"v1/v1endpoint"
+	"v1/v1service"
 
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"

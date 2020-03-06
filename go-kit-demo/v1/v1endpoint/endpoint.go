@@ -2,7 +2,7 @@ package v1endpoint
 
 import (
 	"context"
-	"go-demos/go-kit-demo/v1/v1service"
+	"v1/v1service"
 
 	"github.com/go-kit/kit/endpoint"
 )
