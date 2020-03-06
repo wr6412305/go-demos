@@ -10,4 +10,4 @@ require (
 	local.com/log-zap v0.0.0-00010101000000-000000000000
 )
 
-replace local.com/log-zap => ../../../go-books/projects/log-tools/log-zap
+replace local.com/log-zap => ../log-zap
