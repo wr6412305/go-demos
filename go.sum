@@ -309,6 +309,8 @@ github.com/nacos-group/nacos-sdk-go v0.0.0-20190820112454-5245ea3cded6 h1:vsvC4X
 github.com/nacos-group/nacos-sdk-go v0.0.0-20190820112454-5245ea3cded6/go.mod h1:CEkSvEpoveoYjA81m4HNeYQ0sge0LFGKSEqO3JKHllo=
 github.com/nladuo/go-zk-fifo v0.0.0-20151228050926-7d50ad2d07f2 h1:LdcRuGPd+P87X6j4+5J+wNn8AvFKzGCY6CpKHzx3LqY=
 github.com/nladuo/go-zk-fifo v0.0.0-20151228050926-7d50ad2d07f2/go.mod h1:b8goxbrT7q3cKKdcNfWmovn6ZQdqYbXrS4e/4qwUTTw=
+github.com/nsqio/go-nsq v1.0.8 h1:3L2F8tNLlwXXlp2slDUrUWSBn2O3nMh8R1/KEDFTHPk=
+github.com/nsqio/go-nsq v1.0.8/go.mod h1:vKq36oyeVXgsS5Q8YEO7WghqidAVXQlcFxzQbQTuDEY=
 github.com/olivere/elastic v6.2.27+incompatible h1:c57kY8PF/J6Iz2ATxHQkWFNkYyKDlEZr6hl/O5ZFNvQ=
 github.com/olivere/elastic v6.2.27+incompatible/go.mod h1:J+q1zQJTgAz9woqsbVRqGeB5G1iqDKVBWLNSYW8yfJ8=
 github.com/olivere/elastic/v7 v7.0.11 h1:0JOSFolWtyIlcwoqSMKUjXMvUziq1wKDZN2mq3Sclys=

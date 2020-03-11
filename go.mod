@@ -24,6 +24,7 @@ require (
 	github.com/lib/pq v1.1.1
 	github.com/mailru/easyjson v0.7.1 // indirect
 	github.com/nladuo/go-zk-fifo v0.0.0-20151228050926-7d50ad2d07f2
+	github.com/nsqio/go-nsq v1.0.8
 	github.com/olivere/elastic v6.2.27+incompatible
 	github.com/olivere/elastic/v7 v7.0.11
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
