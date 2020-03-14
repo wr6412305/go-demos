@@ -1,27 +1,28 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/nsqio/go-nsq"
 )
 
 func main() {
-	for i := 0; i < 10; i++ {
-		sendMessage()
+	nsqAddr := "117.51.148.112:4150"
+	producer, err := nsq.NewProducer(nsqAddr, nsq.NewConfig())
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
-	time.Sleep(time.Second * 10)
-}
 
-func sendMessage() {
-	url := "117.51.148.112:4150"
-	producer, err := nsq.NewProducer(url, nsq.NewConfig())
-	if err != nil {
-		panic(err)
+	for i := 0; i < 10; i++ {
+		msg := "message: " + time.Now().Format("2006-01-02 15:04:05")
+		err = producer.Publish("test", []byte(msg))
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		fmt.Println("send:", msg)
+		time.Sleep(1 * time.Second)
 	}
-	err = producer.Publish("test", []byte("hello world"))
-	if err != nil {
-		panic(err)
-	}
-	producer.Stop()
 }
