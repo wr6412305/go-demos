@@ -5,6 +5,7 @@ go 1.13
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/Shopify/sarama v1.24.1
+	github.com/Workiva/go-datastructures v1.0.52
 	github.com/apache/rocketmq-client-go v1.2.4
 	github.com/bsm/sarama-cluster v2.1.15+incompatible
 	github.com/bwmarrin/snowflake v0.3.0
