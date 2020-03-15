@@ -29,7 +29,7 @@ import (
 )
 
 var grpcAddr = flag.String("g", "127.0.0.1:8080", "grpcAddr")
-var prometheusAddr = flag.String("p", "127.0.0.1:9090", "prometheus addr")
+var prometheusAddr = flag.String("p", "127.0.0.1:8081", "prometheus addr")
 var quitChan = make(chan error, 1)
 
 func main() {
