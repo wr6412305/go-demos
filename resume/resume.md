@@ -7,6 +7,13 @@
 - 电话：18548910893
 - 邮箱：1294851990@qq.com
 
+## 个人技能
+
+- 扎实的go和数学基础
+- 熟悉linux,python,mysql,docker,了解mq,k8s
+- 熟悉go-micro,go-kit,grpc,beego,gin
+- 理解pow,pos,raft,pbft等共识算法
+
 ## 北京小链科技有限公司(2019.7-至今)
 
 ### 项目: 数字货币交易所钱包开发
@@ -24,13 +31,6 @@
 - 实现eth,bch,bsv,usdt 的交易签名
 - [github](https://github.com/liangjisheng/TokenCore)
 - > note: private repository
-
-## 个人技能
-
-- 扎实的go和数学基础
-- 熟悉linux,python,mysql,docker,了解mq,k8s
-- 熟悉go-micro,go-kit,grpc,beego,gin
-- 理解pow,pos,raft,pbft等共识算法
 
 ## 在校经历
 
