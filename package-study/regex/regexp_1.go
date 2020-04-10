@@ -6,7 +6,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp1() {
 	// 直接使用字符串进行正则表达式匹配
 	match, _ := regexp.MatchString("p([a-z]+)ch", "peach")
 	fmt.Println(match)

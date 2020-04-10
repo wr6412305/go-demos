@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp5() {
 	pat := `(((abc.)def.)ghi)`
 	src := `abc-def-ghi abc+def+ghi`
 	fmt.Println(regexp.MatchString(pat, src))

@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp6() {
 	pat := `(abc)(def)(ghi)`
 	reg := regexp.MustCompile(pat)
 	// 获取正则表达式字符串

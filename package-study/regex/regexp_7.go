@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp7() {
 	pat := `(((abc.)def.)ghi)`
 	reg := regexp.MustCompile(pat)
 	src := []byte(`abc-def-ghi abc+def+ghi`)

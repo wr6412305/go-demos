@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp4() {
 	text := `Hello 世界！123 Go.`
 
 	// 查找连续的小写字母

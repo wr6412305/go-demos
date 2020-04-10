@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-func IsIp(ip string) (b bool) {
+// IsIP ...
+func IsIP(ip string) (b bool) {
 	regexIP := "^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$"
 	if m, _ := regexp.MatchString(regexIP, ip); !m {
 		return false

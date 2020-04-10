@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-func main() {
+func regexp2() {
 	// regular expression pattern
 	re := regexp.MustCompile("/oid/([\\d]+)/")
 

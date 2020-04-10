@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/BurntSushi/toml v0.3.1
+	github.com/InWeCrypto/sha3 v0.0.0-20171123094127-d0fd118c5827
 	github.com/Shopify/sarama v1.24.1
 	github.com/Workiva/go-datastructures v1.0.52
 	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
@@ -36,7 +37,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.etcd.io/etcd v3.3.17+incompatible
 	go.uber.org/zap v1.12.0
-	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876 // indirect
+	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
 	gopkg.in/confluentinc/confluent-kafka-go.v1 v1.1.0
 	gopkg.in/jcmturner/gokrb5.v7 v7.3.0 // indirect
