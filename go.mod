@@ -30,11 +30,15 @@ require (
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/olivere/elastic v6.2.27+incompatible
 	github.com/olivere/elastic/v7 v7.0.11
+	github.com/opentracing-contrib/go-stdlib v0.0.0-20190519235532-cf7a6c988dc9
+	github.com/opentracing/opentracing-go v1.1.0
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
 	github.com/prometheus/client_golang v1.1.0
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/uber/jaeger-client-go v2.22.1+incompatible
+	github.com/uber/jaeger-lib v2.2.0+incompatible // indirect
 	go.etcd.io/etcd v3.3.17+incompatible
 	go.uber.org/zap v1.12.0
 	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876
