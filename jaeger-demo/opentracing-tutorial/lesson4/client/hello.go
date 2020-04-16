@@ -9,13 +9,14 @@ import (
 	"go-demos/jaeger-demo/opentracing-tutorial/lib"
 
 	"github.com/opentracing/opentracing-go"
+	"github.com/opentracing/opentracing-go/ext"
 	"github.com/opentracing/opentracing-go/log"
 )
 
-// go run hello.go ljs
+// go run hello.go ljs greeting
 
 func main() {
-	if len(os.Args) != 2 {
+	if len(os.Args) != 3 {
 		panic("ERROR: Expecting one argument")
 	}
 
@@ -24,9 +25,11 @@ func main() {
 	opentracing.SetGlobalTracer(tracer)
 
 	helloTo := os.Args[1]
+	greeting := os.Args[2]
 
-	rootSpan := tracer.StartSpan("say-hello3")
+	rootSpan := tracer.StartSpan("say-hello")
 	rootSpan.SetTag("hello-to", helloTo)
+	rootSpan.SetBaggageItem("greeting", greeting)
 	defer rootSpan.Finish()
 
 	ctx := opentracing.ContextWithSpan(context.Background(), rootSpan)
@@ -41,11 +44,20 @@ func formatString(ctx context.Context, helloTo string) string {
 
 	v := url.Values{}
 	v.Set("helloTo", helloTo)
-	url := "http://127.0.0.1:8081/format?" + v.Encode()
+	url := "http://localhost:8081/format?" + v.Encode()
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		panic(err.Error())
 	}
+
+	ext.SpanKindRPCClient.Set(span)
+	ext.HTTPUrl.Set(span, url)
+	ext.HTTPMethod.Set(span, "GET")
+	span.Tracer().Inject(
+		span.Context(),
+		opentracing.HTTPHeaders,
+		opentracing.HTTPHeadersCarrier(req.Header),
+	)
 
 	resp, err := lib.Do(req)
 	if err != nil {
@@ -58,6 +70,7 @@ func formatString(ctx context.Context, helloTo string) string {
 		log.String("event", "string-format"),
 		log.String("value", helloStr),
 	)
+
 	return helloStr
 }
 
@@ -68,11 +81,15 @@ func printHello(ctx context.Context, helloStr string) {
 	v := url.Values{}
 	v.Set("helloStr", helloStr)
 	url := "http://localhost:8082/publish?" + v.Encode()
-
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		panic(err.Error())
 	}
+
+	ext.SpanKindRPCClient.Set(span)
+	ext.HTTPUrl.Set(span, url)
+	ext.HTTPMethod.Set(span, "GET")
+	span.Tracer().Inject(span.Context(), opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
 
 	if _, err := lib.Do(req); err != nil {
 		panic(err.Error())

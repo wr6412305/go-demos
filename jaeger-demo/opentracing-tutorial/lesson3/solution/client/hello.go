@@ -13,6 +13,8 @@ import (
 	"github.com/opentracing/opentracing-go/log"
 )
 
+// go run hello.go ljs
+
 func main() {
 	if len(os.Args) != 2 {
 		panic("ERROR: Expecting one argument")
