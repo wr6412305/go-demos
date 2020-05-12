@@ -30,4 +30,11 @@ func parse() {
 	tm2 := time.Unix(timestamp, 0)
 	fmt.Println(tm2.Format("2006-01-02 03:04:05 PM"))
 	fmt.Println(tm2.Format("02/01/2006 15:04:05 PM"))
+
+	t, err = time.Parse("2006-Jan-02 15:04:05 UTC", "2020-May-05 02:42:22.000000000 UTC")
+	if err != nil {
+		fmt.Println("parse err:", err)
+		return
+	}
+	fmt.Printf("time: %+v", t)
 }

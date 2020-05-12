@@ -3,10 +3,10 @@ package main
 func main() {
 	// date()
 	// marshalText()
-	// parse()
+	parse()
 	// show()
 	// ticker()
-	timeStamp()
+	// timeStamp()
 	// time1()
 	// time2()
 	// time3()
