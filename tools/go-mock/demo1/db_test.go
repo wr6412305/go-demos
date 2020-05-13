@@ -35,8 +35,12 @@ func TestGetFromDB1(t *testing.T) {
 
 	m := NewMockDB(ctrl)
 	m.EXPECT().Get(gomock.Not("Sam")).Return(0, nil).Times(2)
-	GetFromDB(m, "ABC")
-	GetFromDB(m, "DEF")
+	if v := GetFromDB(m, "ABC"); v != -1 {
+		t.Fatal("expect -1, but got", v)
+	}
+	if v := GetFromDB(m, "DEF"); v != -1 {
+		t.Fatal("expect -1, but got", v)
+	}
 }
 
 func TestGetFromDB2(t *testing.T) {
@@ -47,6 +51,10 @@ func TestGetFromDB2(t *testing.T) {
 	o1 := m.EXPECT().Get(gomock.Eq("Tom")).Return(0, errors.New("not exist"))
 	o2 := m.EXPECT().Get(gomock.Eq("Sam")).Return(630, nil)
 	gomock.InOrder(o1, o2)
-	GetFromDB(m, "Tom")
-	GetFromDB(m, "Sam")
+	if v := GetFromDB(m, "Tom"); v != 0 {
+		t.Fatal("expect 0, but got", v)
+	}
+	if v := GetFromDB(m, "Sam"); v != 630 {
+		t.Fatal("expect 630, but got", v)
+	}
 }
