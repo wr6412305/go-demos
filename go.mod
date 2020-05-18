@@ -47,9 +47,11 @@ require (
 	github.com/opentracing-contrib/go-stdlib v0.0.0-20190519235532-cf7a6c988dc9
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
+	github.com/prashantv/gostub v1.0.0 // indirect
 	github.com/prometheus/client_golang v1.1.0
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
+	github.com/smartystreets/goconvey v1.6.4
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/uber/jaeger-client-go v2.22.1+incompatible
