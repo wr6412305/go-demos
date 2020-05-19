@@ -3,6 +3,7 @@ module go-demos
 go 1.13
 
 require (
+	bou.ke/monkey v1.0.2
 	github.com/BurntSushi/toml v0.3.1
 	github.com/InWeCrypto/sha3 v0.0.0-20171123094127-d0fd118c5827
 	github.com/Joker/jade v1.0.0 // indirect
@@ -47,7 +48,7 @@ require (
 	github.com/opentracing-contrib/go-stdlib v0.0.0-20190519235532-cf7a6c988dc9
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/pierrec/lz4 v2.4.0+incompatible // indirect
-	github.com/prashantv/gostub v1.0.0 // indirect
+	github.com/prashantv/gostub v1.0.0
 	github.com/prometheus/client_golang v1.1.0
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/smallnest/rpcx v0.0.0-20191228024106-2e3195bbbddb
