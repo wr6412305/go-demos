@@ -1,13 +1,14 @@
 package main
 
 import (
+	"crypto/ed25519"
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
 	"log"
 
-	"github.com/agl/ed25519"
-	"github.com/agl/ed25519/extra25519"
+	// "github.com/agl/ed25519"
+	// "github.com/agl/ed25519/extra25519"
 	"golang.org/x/crypto/curve25519"
 )
 
@@ -45,13 +46,13 @@ func extra25519PriPub() {
 	fmt.Println(hex.EncodeToString(priKey[:]))
 
 	var curve25519Private [32]byte
-	extra25519.PrivateKeyToCurve25519(&curve25519Private, &priKey)
+	// extra25519.PrivateKeyToCurve25519(&curve25519Private, &priKey)
 	fmt.Print("curvepri:")
 	fmt.Println(hex.EncodeToString(curve25519Private[:]))
 
 	var curve25519Public [32]byte
 	var representative [32]byte
-	extra25519.ScalarBaseMult(&curve25519Public, &representative, &curve25519Private)
+	// extra25519.ScalarBaseMult(&curve25519Public, &representative, &curve25519Private)
 	fmt.Print("curvepub:")
 	fmt.Println(hex.EncodeToString(curve25519Public[:]))
 	fmt.Print("representative:")
