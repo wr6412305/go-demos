@@ -29,6 +29,7 @@ require (
 	github.com/go-stomp/stomp v2.0.3+incompatible
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/mock v1.4.3
+	github.com/google/wire v0.4.0
 	github.com/gorilla/schema v1.1.0 // indirect
 	github.com/iris-contrib/blackfriday v2.0.0+incompatible // indirect
 	github.com/iris-contrib/formBinder v5.0.0+incompatible // indirect
