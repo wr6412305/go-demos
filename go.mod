@@ -29,8 +29,11 @@ require (
 	github.com/go-stomp/stomp v2.0.3+incompatible
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/mock v1.4.3
+	github.com/golang/protobuf v1.3.2
 	github.com/google/wire v0.4.0
 	github.com/gorilla/schema v1.1.0 // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
+	github.com/grpc-ecosystem/grpc-gateway v1.9.5
 	github.com/iris-contrib/blackfriday v2.0.0+incompatible // indirect
 	github.com/iris-contrib/formBinder v5.0.0+incompatible // indirect
 	github.com/iris-contrib/go.uuid v2.0.0+incompatible // indirect
@@ -43,6 +46,7 @@ require (
 	github.com/lib/pq v1.1.1
 	github.com/mailru/easyjson v0.7.1 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
+	github.com/mwitkow/go-proto-validators v0.3.0
 	github.com/nladuo/go-zk-fifo v0.0.0-20151228050926-7d50ad2d07f2
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/olivere/elastic v6.2.27+incompatible
@@ -64,7 +68,9 @@ require (
 	go.uber.org/zap v1.12.0
 	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
+	google.golang.org/grpc v1.24.0
 	gopkg.in/confluentinc/confluent-kafka-go.v1 v1.1.0
 	gopkg.in/jcmturner/gokrb5.v7 v7.3.0 // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	mellium.im/sasl v0.2.1 // indirect
 )
