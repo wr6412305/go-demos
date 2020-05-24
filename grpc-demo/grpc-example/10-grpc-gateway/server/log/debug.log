@@ -100,3 +100,30 @@
 {"level":"info","ts":"2020-05-24T20:04:14.259+0800","caller":"grpclog/logger.go:57","msg":"pickfirstBalancer: HandleSubConnStateChange: 0xc00017f870, {READY <nil>}","system":"grpc","grpc_log":true}
 {"level":"info","ts":"2020-05-24T20:04:14.259+0800","caller":"grpclog/logger.go:49","msg":"Channel Connectivity change to READY","system":"grpc","grpc_log":true}
 {"level":"info","ts":"2020-05-24T20:05:24.233+0800","caller":"go-grpc-middleware@v1.2.0/chain.go:25","msg":"finished unary call with code OK","grpc.start_time":"2020-05-24T20:05:24+08:00","system":"grpc","span.kind":"server","grpc.service":"proto.Simple","grpc.method":"Route","grpc.code":"OK","grpc.time_ms":0}
+{"level":"info","ts":"2020-05-24T20:43:06.645+0800","caller":"grpclog/logger.go:49","msg":"parsed scheme: \"\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"scheme \"\" not registered, fallback to default scheme","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"ccResolverWrapper: sending update to cc: {[{127.0.0.1:8080  <nil> 0 <nil>}] <nil> <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"ClientConn switching balancer to \"pick_first\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"Channel switches to new LB policy \"pick_first\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"Subchannel Connectivity change to CONNECTING","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:57","msg":"pickfirstBalancer: HandleSubConnStateChange: 0xc00017f890, {CONNECTING <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"Channel Connectivity change to CONNECTING","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.646+0800","caller":"grpclog/logger.go:49","msg":"Subchannel picks a new address \"127.0.0.1:8080\" to connect","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.685+0800","caller":"grpclog/logger.go:49","msg":"Subchannel Connectivity change to READY","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.685+0800","caller":"grpclog/logger.go:57","msg":"pickfirstBalancer: HandleSubConnStateChange: 0xc00017f890, {READY <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:43:06.685+0800","caller":"grpclog/logger.go:49","msg":"Channel Connectivity change to READY","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:47:27.130+0800","caller":"go-grpc-middleware@v1.2.0/chain.go:25","msg":"finished unary call with code Unauthenticated","grpc.start_time":"2020-05-24T20:47:27+08:00","system":"grpc","span.kind":"server","grpc.service":"proto.Simple","grpc.method":"Route","error":"rpc error: code = Unauthenticated desc = Request unauthenticated with bearer","grpc.code":"Unauthenticated","grpc.time_ms":0}
+{"level":"info","ts":"2020-05-24T20:58:01.454+0800","caller":"grpclog/logger.go:49","msg":"parsed scheme: \"\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"scheme \"\" not registered, fallback to default scheme","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"ccResolverWrapper: sending update to cc: {[{127.0.0.1:8080  <nil> 0 <nil>}] <nil> <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"ClientConn switching balancer to \"pick_first\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"Channel switches to new LB policy \"pick_first\"","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"Subchannel Connectivity change to CONNECTING","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:57","msg":"pickfirstBalancer: HandleSubConnStateChange: 0xc000181890, {CONNECTING <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"Channel Connectivity change to CONNECTING","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.455+0800","caller":"grpclog/logger.go:49","msg":"Subchannel picks a new address \"127.0.0.1:8080\" to connect","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.480+0800","caller":"grpclog/logger.go:49","msg":"Subchannel Connectivity change to READY","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.480+0800","caller":"grpclog/logger.go:57","msg":"pickfirstBalancer: HandleSubConnStateChange: 0xc000181890, {READY <nil>}","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:58:01.480+0800","caller":"grpclog/logger.go:49","msg":"Channel Connectivity change to READY","system":"grpc","grpc_log":true}
+{"level":"info","ts":"2020-05-24T20:59:39.370+0800","caller":"go-grpc-middleware@v1.2.0/chain.go:25","msg":"finished unary call with code OK","grpc.start_time":"2020-05-24T20:59:39+08:00","system":"grpc","span.kind":"server","grpc.service":"proto.Simple","grpc.method":"Route","grpc.code":"OK","grpc.time_ms":0}
+{"level":"info","ts":"2020-05-24T21:00:42.098+0800","caller":"go-grpc-middleware@v1.2.0/chain.go:25","msg":"finished unary call with code OK","grpc.start_time":"2020-05-24T21:00:42+08:00","system":"grpc","span.kind":"server","grpc.service":"proto.Simple","grpc.method":"Route","grpc.code":"OK","grpc.time_ms":0}
