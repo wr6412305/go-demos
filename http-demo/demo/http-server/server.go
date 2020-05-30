@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -21,15 +22,21 @@ func defaultFunc(w http.ResponseWriter, r *http.Request) {
 	// 获取地址栏内容
 	fmt.Println(r.Method, r.RequestURI)
 	// 获取请求头内容
+	fmt.Println("request header:")
 	for k, v := range r.Header {
 		fmt.Println(k, v[0])
 	}
+	fmt.Println()
 	data := make(map[string]string)
 	if err := r.ParseForm(); err != nil {
 		if r.Form != nil {
 			dataForm = r.Form
 		}
 	}
+
+	fmt.Println("URL:", r.URL.Path)
+	fmt.Println("Scheme:", r.URL.Scheme)
+
 	// 读取客户端的内容
 	buf := make([]byte, 2048)
 	n, _ := r.Body.Read(buf)
@@ -37,8 +44,9 @@ func defaultFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("receive data from body", string(buf[:n]))
 
 	if r.Method == "GET" {
-		r.ParseForm()
+		// r.ParseForm()
 		for k, v := range r.Form {
+			fmt.Println(k, ":", strings.Join(v, ""))
 			data[k] = v[0]
 		}
 	}
@@ -78,9 +86,14 @@ func defaultFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%v\n", string(mjson))
 }
 
+// curl "http://127.0.0.1:8080/"
+// curl "http://127.0.0.1:8080/?name=ljs&toturial=gostudy&topic=web"
+
 func main() {
 	http.HandleFunc("/", defaultFunc)
-	if err := http.ListenAndServe("127.0.0.1:8080", nil); err != nil {
+	addr := "127.0.0.1:8080"
+	log.Println("http server start at:", addr)
+	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatal("ListenAndServer: ", err)
 	}
 }
