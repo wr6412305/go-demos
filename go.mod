@@ -31,6 +31,7 @@ require (
 	github.com/golang/mock v1.4.3
 	github.com/golang/protobuf v1.3.3
 	github.com/google/wire v0.4.0
+	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/schema v1.1.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0
 	github.com/grpc-ecosystem/grpc-gateway v1.9.5
