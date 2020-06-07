@@ -1,0 +1,2 @@
+WARNING 2020/06/07 17:36:39 helper.go:77: <nil> Failed to get cookie
+ERROR 2020/06/07 17:36:51 helper.go:72: sql: no rows in result set Cannot find user
