@@ -9,8 +9,9 @@ import (
 // Login 登录页面
 // GET /login
 func Login(writer http.ResponseWriter, request *http.Request) {
-	t := parseTemplateFiles("auth.layout", "navbar", "login")
-	t.Execute(writer, nil)
+	// t := parseTemplateFiles("auth.layout", "navbar", "login")
+	// t.Execute(writer, nil)
+	generateHTML(writer, nil, "auth.layout", "navbar", "login")
 }
 
 // Signup 注册页面

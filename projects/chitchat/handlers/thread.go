@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"chitchat/models"
+
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
 // NewThread 创建群组页面
@@ -52,7 +54,12 @@ func ReadThread(writer http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		// log.Println("Cannot read thread")
 		// danger(err, "Cannot read thread")
-		errorMessage(writer, request, "Cannot read thread")
+		// errorMessage(writer, request, "Cannot read thread")
+
+		msg := localizer.MustLocalize(&i18n.LocalizeConfig{
+			MessageID: "thread_not_found",
+		})
+		errorMessage(writer, request, msg)
 	} else {
 		_, err := session(writer, request)
 		if err != nil {

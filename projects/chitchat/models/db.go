@@ -18,10 +18,10 @@ var Db *sql.DB
 
 func init() {
 	var err error
-	config := config.LoadConfig()
-	driver := config.Db.Driver
-	source := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true", config.Db.User, config.Db.Password,
-		config.Db.Address, config.Db.Database)
+	// config := config.LoadConfig()
+	driver := config.ViperConfig.Db.Driver
+	source := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true", config.ViperConfig.Db.User, config.ViperConfig.Db.Password,
+		config.ViperConfig.Db.Address, config.ViperConfig.Db.Database)
 	Db, err = sql.Open(driver, source)
 	// Db, err = sql.Open("mysql", "root:ljs199711@tcp(117.51.148.112:3306)/chitchat?charset=utf8&parseTime=true")
 	if err != nil {
