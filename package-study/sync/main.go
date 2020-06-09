@@ -9,5 +9,12 @@ func main() {
 	// cond4()
 	// workerPool()
 	// waitgroup()
-	syncMap()
+	// syncMap()
+	// condVar3()
+	// condVar3_1()
+	// pool1()
+	// pool2()
+	// pool3()
+	// pool4()
+	pool5()
 }
